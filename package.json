@@ -4,6 +4,7 @@
   "description": "This is MEAN Stack Project using Angular 14 by Sohaib",
   "main": "app.js",
   "scripts": {
+    "serve": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
