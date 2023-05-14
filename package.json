@@ -24,5 +24,8 @@
   "homepage": "https://github.com/S0haibZafar/auth_apis#readme",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
