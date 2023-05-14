@@ -1,0 +1,25 @@
+{
+  "name": "auth_apis",
+  "version": "1.0.0",
+  "description": "This is MEAN Stack Project using Angular 14 by Sohaib",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S0haibZafar/auth_apis.git"
+  },
+  "keywords": [
+    "Mongodb",
+    "expressjs",
+    "Angular",
+    "Nodejs"
+  ],
+  "author": "Sohaib",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/S0haibZafar/auth_apis/issues"
+  },
+  "homepage": "https://github.com/S0haibZafar/auth_apis#readme"
+}
