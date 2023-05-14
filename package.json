@@ -2,7 +2,7 @@
   "name": "auth_apis",
   "version": "1.0.0",
   "description": "This is MEAN Stack Project using Angular 14 by Sohaib",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
