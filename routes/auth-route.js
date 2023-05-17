@@ -8,6 +8,14 @@ router.post("/register", (req, res)=>{
         email : req.body.email,
         password : req.body.password,
     }); 
+
+    user.save().
+    then((__)=>{
+        res.json({success:true,message: "Account has been created"});
+    }).catch((err)=>{
+        res.json({success:false,message: "Authentication failed"});
+    });
+
 });
 
 router.post("/login", (req, res)=>{
