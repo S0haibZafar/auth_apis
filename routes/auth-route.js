@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const User = require("../models/user");
-const bodyParser = require('body-parser');
 
 router.post("/register", (req, res) => {
     // res.json("Register works");
