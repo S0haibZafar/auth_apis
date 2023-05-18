@@ -1,4 +1,5 @@
 const express = require("express")
+const bodyParser = require('body-parser');
 
 
 const app = express();
@@ -15,6 +16,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/auth-app')
     }).catch((err) => {
         console.log("DB is not connected!!", err);
     });
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
 app.use('/auth', authRoute);
 
