@@ -9,6 +9,7 @@ const port = process.env.port || 8080;
 const authRoute = require("./routes/auth-route");
 // var routes = require("./routes/index.js");
 const mongoose = require('mongoose')
+const cors = require('cors');
 
 mongoose.connect('mongodb://127.0.0.1:27017/auth-app')
     .then(() => {
@@ -21,7 +22,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/auth-app')
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
-
+app.use(cors());
 app.use('/auth', authRoute);
 
 app.get("/", (req, res) => {
