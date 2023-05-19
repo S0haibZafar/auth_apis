@@ -16,7 +16,7 @@ router.post("/register", (req, res) => {
                 then((__) => {
                     res.json({ success: true, message: "Account has been created" });
                 }).catch((err) => {
-                    if (err.code == 11000) {
+                    if (err.code ===11000) {
                         res.json({ success: false, message: "Account is already exist!" });
                     }
                     res.json({ success: false, message: "Authentication failed!!" });
