@@ -12,15 +12,23 @@ router.post("/register", (req, res) => {
                 email: req.body.email,
                 password: hash,
             });
-            user.save().
-                then((__) => {
-                    res.json({ success: true, message: "Account has been created" });
-                }).catch((err) => {
-                    if (err.code ===11000) {
-                        res.json({ success: false, message: "Account is already exist!" });
-                    }
-                    res.json({ success: false, message: "Authentication failed!!" });
-                });
+
+            User.find({ email: req.body.email }).exec().then(result => {
+                if (result.length < 1) {
+
+                    user.save().
+                        then((__) => {
+                            res.json({ success: true, message: "Account has been created" });
+                        }).catch((err) => {
+                            res.json({ success: false, message: "Authentication failed!!" });
+                        });
+
+                } else {
+                    res.json({ success: false, message: "Account is already exist!" });
+                }
+            }).catch(err => {
+                console.log(" err:::-----", err);
+            });
         }
     })
 
