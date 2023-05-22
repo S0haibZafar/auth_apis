@@ -37,7 +37,24 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    res.json("Login works");
+    User.find({ email: req.body.email }).exec().then(result => {
+        if (result.length < 1) {
+            return res.json({ success: false, message: "User not found!" });
+        }
+        const user = result[0];
+        bcrypt.compare(req.body.password, user.password, (err, ret) => {
+            if (ret) {
+                return res.json({ success: true, message: "Login Successfull!" });
+
+            } else {
+                return res.json({ success: false, message: "Password does not match!" });
+            }
+        })
+
+
+    }).catch(err => {
+        res.json({ success: false, message: "Authentication Failed!" });
+    })
 });
 
 
