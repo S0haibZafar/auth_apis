@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/user");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 router.post("/register", (req, res) => {
     bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -44,7 +45,13 @@ router.post("/login", (req, res) => {
         const user = result[0];
         bcrypt.compare(req.body.password, user.password, (err, ret) => {
             if (ret) {
-                return res.json({ success: true, message: "Login Successfull!" });
+
+                const payload = {
+                    userId : user._id
+                }
+                const token = jwt.sign(payload, "webBatch");
+
+                return res.json({ success: true, token: token, message: "Login Successfull!" });
 
             } else {
                 return res.json({ success: false, message: "Password does not match!" });
@@ -55,6 +62,11 @@ router.post("/login", (req, res) => {
     }).catch(err => {
         res.json({ success: false, message: "Authentication Failed!" });
     })
+});
+
+
+router.post("/prodile", (req, res) => {
+
 });
 
 
