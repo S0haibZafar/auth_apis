@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/user");
 const bcrypt = require('bcrypt');
+const jwt = require('/jsonwebtoken');
 
 router.post("/register", (req, res) => {
     bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -55,6 +56,11 @@ router.post("/login", (req, res) => {
     }).catch(err => {
         res.json({ success: false, message: "Authentication Failed!" });
     })
+});
+
+
+router.post("/prodile", (req, res) => {
+
 });
 
 
