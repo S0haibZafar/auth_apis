@@ -2,6 +2,8 @@ const router = require("express").Router();
 const User = require("../models/user");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const checkAuth = require("../middleware/check-auth");
+
 
 router.post("/register", (req, res) => {
     bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -65,7 +67,7 @@ router.post("/login", (req, res) => {
 });
 
 
-router.get("/profile", (req, res) => {
+router.get("/profile", checkAuth, (req, res) => {
     const userId = '646a51305be450e5b0d71838';
 
     User.findById(userId).exec().then(result=>{
