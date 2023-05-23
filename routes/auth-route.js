@@ -67,7 +67,7 @@ router.post("/login", (req, res) => {
 });
 
 
-router.get("/profile", (req, res) => {
+router.get("/profile", checkAuth, (req, res) => {
     const userId = '646a51305be450e5b0d71838';
 
     User.findById(userId).exec().then(result=>{
