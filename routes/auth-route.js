@@ -65,7 +65,17 @@ router.post("/login", (req, res) => {
 });
 
 
-router.post("/prodile", (req, res) => {
+router.get("/profile", (req, res) => {
+    const userId = '646a51305be450e5b0d71838';
+
+    User.findById(userId).exec().then(result=>{
+        if (result){
+            return res.json({ success: true, data: result });
+        }
+    }).catch(err=>{
+        
+        return res.json({ success: false, message: "Server Error!" });
+    })
 
 });
 
