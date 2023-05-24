@@ -5,5 +5,6 @@ module.exports = (req, res, next) => {
     // return res.json(token);
     const decode = jwt.verify(token, 'webBatch');
     req.userData = decode
-    return decode;
+    // return res.json(decode);
+    next()
 } 
