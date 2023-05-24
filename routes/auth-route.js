@@ -68,7 +68,7 @@ router.post("/login", (req, res) => {
 
 
 router.get("/profile", checkAuth, (req, res) => {
-    const userId = '646a51305be450e5b0d71838';
+    const userId = req.userData.userId;
 
     User.findById(userId).exec().then(result=>{
         if (result){
